@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>知识点</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <ol type="number">
+            <li>
+                <h2>常用那几种浏览器测试？有哪些内核(Layout Engine)?介绍一下你对浏览器内核的理解？</h2>
+                <p>浏览器最主要的部分或者说核心部分： 浏览器的内核主要分成两个部分：渲染引擎（layout engineer）或（Rendering Engine）和JS引擎 （1）Rendering Engine（渲染引擎）通常所谓的浏览器内核也就是浏览器采用的渲染引擎。负责取得网页的内容（HTML、XML、图像等）、整理讯息（加入CSS），计算网页的显示方式，输出值显示器或打印机。也就是对网页语法的解释并渲染网页。所以他能决定浏览器如何显示网页的内容以及页面的格式信息。 不同的浏览器内核对网页编写语法的解释也有所不同，因此同一网页在不同的内核的浏览器里渲染效果也可能不同。这也是网页编写者需要在不同内核的浏览器中测试网页效果的原因。
+                </p>
+                <h2>js引擎：解析和执行javaScript 来实现网页的动态效果。</h2>
+                <p>最开始渲染引擎和JS引擎并没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只渲染引擎。 IE浏览器的内核：Trident； Mozilla/Firefox的是:Gecko google的是Webkit Opera内核Presto,现在修改为了Google Chorome的Blink内核 Safari:webkit内核； Chrome:blink（基于webkit，Google和Opera共同开发的）
+                </p>
+            </li>
+            <li>
+                <h2>说下行内元素和块级元素的区别？行内块元素的兼容性使用？</h2>
+                <p>（1）块级元素排斥其他元素与其位于同一行，可以设定元素的宽度和高度。 （2）块级元素一般是其他元素的容器，可以容纳块级元素和行内元素。这只是大概的说法，比如p元素是个block元素但是它不能包含block元素 （3）同时margin上下左右有效，padding上下左右有效。 eg: a，b，em，img，input，label，span，samll，strong 可以通过display:inline和display:block的设置，改变元素的布局级别。 * display:inline-block 简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现。之后的内联对象会被排列在同一行内。比如我们可以给一个link（a元素）inline-block属性值，使其既具有block的宽度高度特性又具有inline的同行特性。 注意IE6不支持inline-block属性，可以用hack来解决：*display:inline;zoom:1;
+                </p>
+                全兼容的inline-block：
+                <pre>div { display: inline-block; *display: inline; *zoom: 1; }</pre>
+            </li>
+            <li>
+                <h2>Doctype作用？标准模式与兼容模式各有什么区别?</h2>
+                <p>
+                    &lt; !DOCTYPE &gt; 声明位于位于HTML文档中的第一行，处于 html 标签之前。告知浏览器的解析器用什么文档标准解析这个文档。DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。 标准模式的排版 和JS运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。</p>
+            </li>
+            <li>
+                <h2>HTML5 为什么只需要写 &lt;!DOCTYPE HTML&gt;？</h2>
+                <p>HTML5 不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）； 而HTML4.01基于SGML,所以需要对DTD进行引用，才能告知浏览器文档所使用的文档类型。
+                </p>
+            </li>
+            <li>
+                <h2>简述一下你对HTML语义化的理解？</h2>
+                <p>（1）用正确的标签做正确的事情。 HTML标签可以分为有语义的标签和无语义的标签 比如：table是表格，form是表单，strong表示的是强调 无语义：div、span等。 我们在开发中要尽可能的是用语义化的标签。 （2）html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析; 即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的; （3）搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO; 使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。 方便SEO 1.Title 标签 Title 标签能够告诉用户和搜索引擎网页页面的主题思想是什么，一直是搜索引擎的抓取重点。通常，搜索引擎抓取Title标签出于两个目的：作为影响网页排名的重要因素和作为搜索结果页面的显示信息。不管是哪一个目的，对我们做SEO来说都非常重要。 一般来说，Title标签中的单词最好保持在3~6个左右，最好包含关键字。但Title标签中的单词不要全部都是关键字，因为这样可能会造成页面关键字堆砌，导致过度优化。所选单词应简洁明了、具有描述性，要与网页内容具有很大的相关性，并且每个不同的页面都应该包含Title标签。 2.Meta Description标签 对Title标签优化之后，接下来就是对Meta Description标签的优化。Meta Description标签可以说是对Title标签的进一步解释，可以是一句话或者是包含十几个单词的短语。每个页面都该有其自己的Meta Description标签，并且Meta Description标签还可包含一些与网站内容相关但Title标签中未提及的信息。与Title标签要求相似，该部分内容也应具有描述性，与网页内容具有相关性，可包含关键字，但不可过多。 3.Heading标签 Heading标签包含了H1、H2、H3等等，是搜索引擎识别页面信息的重要标记。合理使用H1、H2、H3等不同级别的标签能够使得页面结构更加清晰，有利于搜索引擎的抓取。H1、H2、H3等标签是按照重要程度来排名的。一般一个页面按照需求程度来适当添加该标签：从H1开始，依次往下添加。但不可添加太多Heading标签，否则会适得其反。 4.Strong和B标签 相信大多数朋友都知道Strong和B标签都有加粗的意思，但是很多人并不清楚两者具体有什么区别。其实B标签就是单纯地将文字加粗，而Strong标签不仅是对文字加粗，并且这种形式的加粗会告诉搜索引擎该部分文字比较重要。所以两者从搜索引擎优化的角度来看，是有很大的区别的。 上文中所提到的Heading标签页具有加粗效果，那么这三种标签到底该怎么用？其实，Heading标签一般用于文章大标题以及每段的小标题，而Strong标签一般用于文章段落中的重点词汇，而B标签一般只是强调一种视觉效果。 5.ALT标签 ALT标签是一种图片标签，它将图片的信息以文本的形式展现。对ALT标签的使用没有太多要求，只要在网页中出现图片的部分添加上该属性即可，但其标签内容应与相应页面内容具有相关性，长度不得过长，一般1~5个单词即可。
+                </p>
+            </li>
+            <li>
+                <h2>页面导入样式时，使用link和@import有什么区别？</h2>
+                <p>link 属于 XHTML 标签，除了加载 CSS 外，还能用于定义 RSS, 定义 rel 连 接属性等作用； 而 @import 是 CSS 提供的，只能用于加载 CSS; 页面被加载的 时，link 会同时被加载，而 @import 引用的 CSS 会等到页面被加载完再加载; import 是 CSS2.1 提出的，只在 IE5 以上才能被识别，而 link 是 XHTML 标 签，无兼容问题;
+                </p>
+            </li>
+            <li>
+                <h2>html5 有哪些新特性、移除了那些元素？如何处理 HTML5 新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</h2>
+                <p>HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等 功能的增加;    绘画 canvas;    用于媒介回放的 video 和 audio 元素;    本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失;    sessionStorage 的数据在浏览器关闭后自动删除;    语意化更好的内容元素，比如 article、footer、header、nav、section;    表单控件，calendar、date、time、email、url、search;    新的技术webworker, websockt, Geolocation;移除的元素：    纯表现的元素：basefont，big，center，font, s，strike，tt，u;    对可用性产生负面影响的元素：frame，frameset，noframes;*支持HTML5 新标签：    IE8/IE7/IE6 支持通过 document.createElement 方法产生的标签;    可以利用这一特性让这些浏览器支持HTML5新标签;    浏览器支持新标签后，还需要添加标签默认的样式;当然也可以直接使用 成熟的框架、比如 html5shim;
+                    <pre>
+                        <!--[if lt IE 9]>
+                        <![endif]-->
+                    </pre>     * 如何区分HTML5： DOCTYPE声明\新增的结构元素\功能元素;</p>
+            </li>
+            <li>
+                <h2>HTML5 的离线存储怎么使用，工作原理能不能解释一下？</h2>
+                <p>
+                    在用户没有与因特网连接时，可以正常访问站点和应用，在用户与因特网连接 时，更新用户机器上的缓存文件;原理：HTML5 的离线存储是基于一个新建的 .appcache 文件的缓存机制（不是存储技术），通过这个文件上的解析清单离 线存储资源，这些资源就会像cookie一样被存储了下来。之后当网络在处于离 线状态下时，浏览器会通过被离线存储的数据进行页面展示;如何使用：    1. 页面头部像下面一样加入一个 manifest 的属性;    2. 在 cache.manifest 文件的编写离线存储的资源;        CACHE MANIFEST        #v0.11        CACHE:        js/app.js        css/style.css        NETWORK:        resource/logo.png        FALLBACK:        /  /offline.html        3. 在离线状态时，操作 window.applicationCache 进行需求实现;
+                </p>
+            </li>
+            <li>
+                <h2>浏览器是怎么对 HTML5 的离线储存资源进行管理和加载的呢？</h2>
+                <p>在线的情况下，浏览器发现 html 头部有 manifest 属性，它会请求 manifest  文件，如果是第一次访问 app，那么浏览器就会根据 manifest 文件的内容 下载相应的资源并且进行离线存储。如果已经访问过 app 并且资源已经离线存 储了，那么浏览器就会使用离线的资源加载页面，然后浏览器会对比新的 manifest 文件与旧的 manifest 文件，如果文件没有发生改变，就不做任何 操作，如果文件改变了，那么就会重新下载文件中的资源并进行离线存储;离 线的情况下，浏览器就直接使用离线存储的资源;
+                </p>
+            </li>
+            <li>
+                <h2>
+                    请描述一下 cookies，sessionStorage 和 localStorage 的区别？
+                </h2>
+                <p>
+                    cookie 是网站为了标示用户身份而储存在用户本地终端（Client Side）上 的数据（通常经过加密）; cookie 数据始终在同源的 http 请求中携带（即使不需要），记会在浏览 器和服务器间来回传递; sessionStorage 和 localStorage 不会自动把数据发给服务器，仅在本地 保存; 存储大小：    cookie数据大小不能超过4k;    sessionStorage和localStorage 虽然也有存储大小的限制，但比 cookie大得多，可以达到5M或更大;有期时间：    localStorage    存储持久数据，浏览器关闭后数据不丢失除非 主动删除数据;    sessionStorage  数据在当前浏览器窗口关闭后自动删除;    cookie          设置的 cookie 过期时间之前一直有效， 即使窗口或浏览器关闭;
+                </p>
+            </li>
+            <li>
+                <h2>如何实现浏览器内多个标签页之间的通信?</h2>
+                <p>WebSocket、SharedWorker;也可以调用 localstorge、cookies 等本地存 储方式;localstorge 另一个浏览上下文里被添加、修改或删除时，它都 会触发一个事件，我们通过监听事件，控制它的值来进行页面信息通信; 注意 quirks：Safari 在无痕模式下设置 localstorge 值时会抛出 QuotaExceededError 的异常;</p>
+            </li>
+            <li>
+                <h2>清除浮动有哪些方式？比较好的方式是哪一种？</h2>
+                <p>
+                    <code>
+                        
+                            .div1 {
+                                background: #000080;
+                                border: 1px solid red;
+                                /*解决代码*/
+                                height: 200px;
+                            }
+                            
+                            .div2 {
+                                background: #800080;
+                                border: 1px solid red;
+                                height: 100px;
+                                margin-top: 10px
+                            }
+                            
+                            .left {
+                                float: left;
+                                width: 20%;
+                                height: 200px;
+                                background: #DDD
+                            }
+                            
+                            .right {
+                                float: right;
+                                width: 30%;
+                                height: 80px;
+                                background: #DDD
+                            }
+                      
+                         &lt;div class="div1"&gt;
+                               &lt;div class="left"&gt;Left&lt;/div&gt;;
+                                &lt;div class="right"&gt;Right&lt;/div&gt;
+                          &lt;/div&gt;
+                            &lt;div class="div2"&gt;
+                                footer
+                            &lt;/div&gt;
+                        
+                    </code>
+                </p>
+                <p>
+                    原理：父级div手动定义height，就解决了父级div无法自动获取到高度的问题。 优点：简单、代码少、容易掌握 缺点：只适合高度固定的布局，要给出精确的高度，如果高度和父级div不一样时，会产生问题 建议：不推荐使用，只建议高度固定的布局时使用
+                </p>
+                <h2>结尾处加空div标签clear:both。</h2>
+                <p>
+                    <code>
+                    .div1 { background: #000080; border: 1px solid red; } .div2 { background: #800080; border: 1px solid red; height: 100px; margin-top: 10px } .left { float: left; width: 20%; height: 200px; background: #DDD } .right { float: right; width: 30%; height: 80px; background: #DDD } .clearfloat { clear: both; }</code>
+                </p>
+                <p>
+                    原理：添加一个空div，利用css提高的clear:both清除浮动，让父级div能自动获取到高度 优点：简单、代码少、浏览器支持好、不容易出现怪问题 缺点：不少初学者不理解原理；如果页面浮动布局多，就要增加很多空div，让人感觉很不好 建议：不推荐使用，但此方法是以前主要使用的一种清除浮动方法
+                </p>
+                <h2>父级div定义伪类:after和zoom。</h2>
+                <p> <code>
+                    .div1 {
+                                    background: #000080;
+                                    border: 1px solid red;
+                                    /*解决代码*/
+                                    /*height: 200px;*/
+                                }
+                                
+                                .div2 {
+                                    background: #800080;
+                                    border: 1px solid red;
+                                    height: 100px;
+                                    margin-top: 10px
+                                }
+                                
+                                .left {
+                                    float: left;
+                                    width: 20%;
+                                    height: 200px;
+                                    background: #DDD
+                                }
+                                
+                                .right {
+                                    float: right;
+                                    width: 30%;
+                                    height: 80px;
+                                    background: #DDD
+                                }
+                                
+                                .clearfloat {
+                                    clear: both;
+                                }
+                                .div1.clearfloat:after {
+                                    display: block;
+                                    clear: both;
+                                    content: "";
+                                    visibility: hidden;
+                                    height: 0
+                                }
+                                .div1.clearfloat{
+                                    zoom: 1;
+                                }
+                   </code>
+                </p>
+                <p>
+                    推荐使用
+                </p>
+                <h2>父级div定义overflow:hidden。</h2>
+                <p>
+                    <code>
+                         .div1 {
+                                background: #000080;
+                                border: 1px solid red;
+                                /*解决代码*/
+                                /*height: 200px;*/
+                                overflow: hidden;
+                            }
+                            
+                            .div2 {
+                                background: #800080;
+                                border: 1px solid red;
+                                height: 100px;
+                                margin-top: 10px
+                            }
+                            
+                            .left {
+                                float: left;
+                                width: 20%;
+                                height: 200px;
+                                background: #DDD
+                            }
+                            
+                            .right {
+                                float: right;
+                                width: 30%;
+                                height: 80px;
+                                background: #DDD
+                            }
+
+                    </code>
+                </p>
+                <p>
+                    原理：必须定义width或zoom:1，同时不能定义height，使用overflow:hidden时，浏览器会自动检查浮动区域的高度 优点：简单、代码少、浏览器支持好 缺点：不能和position配合使用，因为超出的尺寸的会被隐藏。 建议：只推荐没有使用position或对overflow:hidden理解比较深的朋友使用。
+                </p>
+            </li>
+            <li>
+                <h2> box-sizing常用的属性有哪些？分别有什么作用？</h2>
+                <p>box-sizing属性可以为三个值之一：content-box（default），border-box，padding-box。 content-box，border和padding不计算入width之内 padding-box，padding计算入width内 border-box，border和padding计算入width之内，其实就是怪异模式了~ ie8+浏览器支持content-box和border-box；
+                </p>
+                <code>
+                    .box{
+                            width: 100px;
+                            height: 100px;
+                            padding: 10px;
+                            border: 5px solid #E6A43F;
+                            margin-bottom: 10px;
+                        }
+                        .box.contentBox{
+                            box-sizing: content-box;
+                            background-color: blue;
+                        }
+                        .box.borderBox{
+                            box-sizing: border-box;
+                            background-color: red;
+                        }
+                        .box.paddingBox{
+                            box-sizing: padding-box;
+                            background-color: green;
+                        }
+
+                </code>
+                <code>
+                    <div class="box contentBox">cotent-box</div>
+<div class="box borderBox">border-box</div>
+<div class="box paddingBox">padding-box</div>
+                </code>
+            </li>
+            <li>
+                <h2>如何在页面上实现一个圆形的可点击区域？</h2>
+                <p>
+                    <code>
+                          .bg {
+                            width: 200px;
+                            height: 200px;
+                            background-color: green;
+                            position: relative;
+                        }
+
+                        .cicle {
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 50%;
+                            background-color: red;
+                            line-height: 100px;
+                            text-align: center;
+                            display: inline-block;
+                            margin: 50px;
+                        }
+                    &lt;div class="bg"&gt;
+                        &lt;div class="cicle" onclick=clickdiv()&gt;
+                            圆形点击
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;!-- 使用map+area coords=“x y圆心，半径”--&gt;
+                    &lt;div class="mapbg"&gt;
+                        &lt;img src="#" width="658" height="4424" border="0" usemap="#Map" /&gt;
+                        &lt;map name="Map" id="Map"&gt;
+                            &lt;area shape="circle" coords="326,205,100" href="index4.html" target="_blank" /&gt;
+                        &lt;/map&gt;
+                    &lt;/div&gt;
+
+                    </code>
+                </p>
+            </li>
+        </ol>
+    </div>
+</body>
+
+</html>

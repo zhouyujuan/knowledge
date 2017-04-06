@@ -1,0 +1,20 @@
+.container{
+	width: 1000px;
+	margin: 0 auto;
+	height: 100%;
+}
+
+ol li h2{
+	background-color: #009688;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+}
+
+ol li p{
+	background-color: #FFEB3B;
+    padding: 10px;
+    font-size: 16px;
+    word-spacing: 2px;
+    line-height: 29px;
+}
